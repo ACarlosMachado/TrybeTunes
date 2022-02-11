@@ -2,6 +2,7 @@ import React from 'react';
 import { Redirect } from 'react-router';
 import { createUser } from '../services/userAPI';
 import Loading from '../components/Loading';
+import Header from '../components/Header';
 
 class Login extends React.Component {
   constructor() {
@@ -31,6 +32,7 @@ class Login extends React.Component {
     const valorMinAceitavel = 3;
     return (
       <div data-testid="page-login">
+        <Header />
         <input
           type="text"
           data-testid="login-name-input"
