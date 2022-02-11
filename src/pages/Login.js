@@ -17,7 +17,6 @@ class Login extends React.Component {
 
   async getOnCLick() {
     const getName = document.querySelector('input').value;
-    console.log(getName);
     this.setState({ loading: true });
     await createUser({ name: getName });
     this.setState({ loading: false, redirect: true });
