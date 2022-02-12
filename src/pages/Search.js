@@ -46,22 +46,24 @@ class Search extends React.Component {
         {
           loading
             ? <Loading />
-            : <section id="formArtist">
-              <input
-                type="text"
-                data-testid="search-artist-input"
-                placeholder="Nome do artista"
-                onChange={ (e) => this.setState({ nameArtist: e.target.value }) }
-              />
-              <button
-                type="submit"
-                data-testid="search-artist-button"
-                disabled={ nameArtist.length < valorMinAceitavel }
-                onClick={ this.searchArtist }
-              >
-                Pesquisar
-              </button>
-            </section>
+            : (
+              <section id="formArtist">
+                <input
+                  type="text"
+                  data-testid="search-artist-input"
+                  placeholder="Nome do artista"
+                  onChange={ (e) => this.setState({ nameArtist: e.target.value }) }
+                />
+                <button
+                  type="submit"
+                  data-testid="search-artist-button"
+                  disabled={ nameArtist.length < valorMinAceitavel }
+                  onClick={ this.searchArtist }
+                >
+                  Pesquisar
+                </button>
+              </section>
+            )
 
         }
 
