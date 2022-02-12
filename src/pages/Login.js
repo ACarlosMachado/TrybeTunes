@@ -48,7 +48,7 @@ class Login extends React.Component {
         >
           Entrar
         </button>
-        { loading ? <Loading /> : Login }
+        { loading ? <Loading /> : <Login /> }
         { redirect ? <Redirect to="/search" /> : ''}
       </div>
     );
