@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect } from 'react-router';
+import { Link } from 'react-router-dom';
 import { createUser } from '../services/userAPI';
 import Loading from '../components/Loading';
 import Header from '../components/Header';
@@ -10,7 +10,6 @@ class Login extends React.Component {
     this.state = {
       name: '',
       loading: false,
-      redirect: false,
 
     };
     this.getOnCLick = this.getOnCLick.bind(this);
@@ -20,14 +19,13 @@ class Login extends React.Component {
     const getName = document.querySelector('input').value;
     this.setState({ loading: true });
     await createUser({ name: getName });
-    this.setState({ loading: false, redirect: true });
+    this.setState({ loading: false });
   }
 
   render() {
     const {
       loading,
       name,
-      redirect,
     } = this.state;
     const valorMinAceitavel = 3;
     return (
@@ -39,17 +37,18 @@ class Login extends React.Component {
           placeholder="Digite seu nome"
           onChange={ (e) => this.setState({ name: e.target.value }) }
         />
-        <button
-          type="submit"
-          data-testid="login-submit-button"
-          id="btn-login"
-          disabled={ name.length < valorMinAceitavel }
-          onClick={ this.getOnCLick }
-        >
-          Entrar
-        </button>
-        { loading ? <Loading /> : Login }
-        { redirect ? <Redirect to="/search" /> : ''}
+        <Link to="/search">
+          <button
+            type="submit"
+            data-testid="login-submit-button"
+            id="btn-login"
+            disabled={ name.length < valorMinAceitavel }
+            onClick={ this.getOnCLick }
+          >
+            Entrar
+          </button>
+        </Link>
+        { loading && <Loading /> }
       </div>
     );
   }
