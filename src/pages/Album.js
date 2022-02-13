@@ -41,7 +41,8 @@ class Album extends React.Component {
         </h3>
         <img url={ image } alt="foto do album" />
         <div>
-          {musicList.map((music) => <MusicCard key={ music.trackNumber } { ...music } />)}
+          {musicList.map((music) => (
+            <MusicCard key={ music.trackNumber } { ...music } />))}
         </div>
 
       </div>
