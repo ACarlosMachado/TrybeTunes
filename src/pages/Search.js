@@ -21,6 +21,7 @@ class Search extends React.Component {
     const getName = document.querySelector('input').value;
     this.setState({ loading: true, nameArtist: getName, phraseErro: '' });
     const result = await searchAlbumsAPI(getName);
+    // console.log(result[0].collectionId);
     const erroGetAlbum = 'Nenhum álbum foi encontrado';
     this.setState({ loading: false,
       cardArtist: result,
