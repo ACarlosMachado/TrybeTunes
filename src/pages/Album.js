@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import getMusics from '../services/musicsAPI';
 import Header from '../components/Header';
 import MusicCard from '../components/MusicCard';
+// import '../css/Album.css';
 
 class Album extends React.Component {
   constructor() {
@@ -44,7 +45,6 @@ class Album extends React.Component {
           {musicList.map((music) => (
             <MusicCard key={ music.trackNumber } { ...music } />))}
         </div>
-
       </div>
     );
   }

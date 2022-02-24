@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { createUser } from '../services/userAPI';
 import Loading from '../components/Loading';
 import Header from '../components/Header';
+// import '../css/Login.css';
 
 class Login extends React.Component {
   constructor() {
@@ -16,9 +17,11 @@ class Login extends React.Component {
   }
 
   async getOnCLick() {
-    const getName = document.querySelector('input').value;
+    // const getName = document.querySelector('input').value;
     this.setState({ loading: true });
-    await createUser({ name: getName });
+    // await createUser({ name: getName });
+    const { name } = this.state;
+    await createUser({ name });
     this.setState({ loading: false });
   }
 
@@ -31,24 +34,27 @@ class Login extends React.Component {
     return (
       <div data-testid="page-login">
         <Header />
-        <input
-          type="text"
-          data-testid="login-name-input"
-          placeholder="Digite seu nome"
-          onChange={ (e) => this.setState({ name: e.target.value }) }
-        />
-        <Link to="/search">
-          <button
-            type="submit"
-            data-testid="login-submit-button"
-            id="btn-login"
-            disabled={ name.length < valorMinAceitavel }
-            onClick={ this.getOnCLick }
-          >
-            Entrar
-          </button>
-        </Link>
-        { loading && <Loading /> }
+        <div className="form">
+          <input
+            type="text"
+            data-testid="login-name-input"
+            placeholder="Digite seu nome"
+            onChange={ (e) => this.setState({ name: e.target.value }) }
+            className="inputText"
+          />
+          <Link to="/search">
+            <button
+              type="submit"
+              data-testid="login-submit-button"
+              id="btn-login"
+              disabled={ name.length < valorMinAceitavel }
+              onClick={ this.getOnCLick }
+            >
+              Entrar
+            </button>
+          </Link>
+          { loading && <Loading /> }
+        </div>
       </div>
     );
   }

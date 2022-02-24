@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Loading from '../components/Loading';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
+// import '../css/Search.css';
 
 class Search extends React.Component {
   constructor() {
@@ -18,10 +19,11 @@ class Search extends React.Component {
   }
 
   async searchArtist() {
-    const getName = document.querySelector('input').value;
-    this.setState({ loading: true, nameArtist: getName, phraseErro: '' });
-    const result = await searchAlbumsAPI(getName);
-    // console.log(result[0].collectionId);
+    // const getName = document.querySelector('input').value;
+    this.setState({ loading: true, phraseErro: '' });
+    const { nameArtist } = this.state;
+    // const result = await searchAlbumsAPI(getName);
+    const result = await searchAlbumsAPI(nameArtist);
     const erroGetAlbum = 'Nenhum álbum foi encontrado';
     this.setState({ loading: false,
       cardArtist: result,
@@ -53,12 +55,14 @@ class Search extends React.Component {
                   data-testid="search-artist-input"
                   placeholder="Nome do artista"
                   onChange={ (e) => this.setState({ nameArtist: e.target.value }) }
+                  className="searchArtist"
                 />
                 <button
                   type="submit"
                   data-testid="search-artist-button"
                   disabled={ nameArtist.length < valorMinAceitavel }
                   onClick={ this.searchArtist }
+                  className="buttonSubmit"
                 >
                   Pesquisar
                 </button>
@@ -69,7 +73,7 @@ class Search extends React.Component {
 
         {
           phraseNameArtist
-            ? <p>{`Resultado de álbuns de: ${nameArtist} `}</p>
+            ? <p className="result">{`Resultado de álbuns de: ${nameArtist} `}</p>
             : ''
         }
 
