@@ -35,4 +35,18 @@ Neste projeto foi desenvolvido o TrybeTunes, uma aplicação capaz de reproduzir
   - Ver o perfil da pessoa logada;
   - Editar o perfil da pessoa logada;
 
+## Iniciando a aplicação
 
+1. Clone o repositório
+  * `git clone git@github.com:ACarlosMachado/TrybeTunes.git`
+  * Entre na pasta do repositório que você acabou de clonar.
+
+2. Instale as dependências e inicialize a aplicação
+  * Instale as dependências:
+    * `npm install`
+  * Inicialize o projeto:
+    * `npm start` (uma nova página deve abrir no seu navegador com o projeto)
+
+
+
+## Observação: a aplicação não está atualizada com o CSS
